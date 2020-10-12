@@ -48,16 +48,18 @@ class DropdownTreeSelect extends Component {
     id: PropTypes.string,
     searchPredicate: PropTypes.func,
     inlineSearchInput: PropTypes.bool,
+    searchTermMinLength: PropTypes.number,
   }
 
   static defaultProps = {
-    onAction: () => {},
-    onFocus: () => {},
-    onBlur: () => {},
-    onChange: () => {},
+    onAction: () => { },
+    onFocus: () => { },
+    onBlur: () => { },
+    onChange: () => { },
     texts: {},
     showDropdown: 'default',
     inlineSearchInput: false,
+    searchTermMinLength: 0,
   }
 
   constructor(props) {
@@ -336,19 +338,19 @@ class DropdownTreeSelect extends Component {
               {this.state.allNodesHidden ? (
                 <span className="no-matches">{texts.noMatches || 'No matches found'}</span>
               ) : (
-                <Tree
-                  data={this.state.tree}
-                  keepTreeOnSearch={this.props.keepTreeOnSearch}
-                  keepChildrenOnSearch={this.props.keepChildrenOnSearch}
-                  searchModeOn={this.state.searchModeOn}
-                  onAction={this.onAction}
-                  onCheckboxChange={this.onCheckboxChange}
-                  onNodeToggle={this.onNodeToggle}
-                  mode={mode}
-                  showPartiallySelected={this.props.showPartiallySelected}
-                  {...commonProps}
-                />
-              )}
+                  <Tree
+                    data={this.state.tree}
+                    keepTreeOnSearch={this.props.keepTreeOnSearch}
+                    keepChildrenOnSearch={this.props.keepChildrenOnSearch}
+                    searchModeOn={this.state.searchModeOn}
+                    onAction={this.onAction}
+                    onCheckboxChange={this.onCheckboxChange}
+                    onNodeToggle={this.onNodeToggle}
+                    mode={mode}
+                    showPartiallySelected={this.props.showPartiallySelected}
+                    {...commonProps}
+                  />
+                )}
             </div>
           )}
         </div>
