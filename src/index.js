@@ -146,6 +146,9 @@ class DropdownTreeSelect extends Component {
   }
 
   onInputChange = value => {
+    // ignore input until it reaches specific length
+    if (value.length < this.props.searchTermMinLength) return
+
     const { allNodesHidden, tree } = this.treeManager.filterTree(
       value,
       this.props.keepTreeOnSearch,
